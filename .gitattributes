@@ -1,0 +1,22 @@
+# Normalize line endings so Git stops warning about CRLF<->LF on Windows.
+* text=auto
+
+# Our sources are LF in the repo, checked out native on Windows.
+*.cpp text
+*.h text
+*.json text
+*.md text
+*.txt text
+*.cmake text
+CMakeLists.txt text
+
+# Scripts that must stay CRLF / native.
+*.bat text eol=crlf
+
+# Binary
+*.img binary
+*.dff binary
+*.txd binary
+*.png binary
+*.ico binary
+*.zip binary

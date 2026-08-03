@@ -1,0 +1,6 @@
+// Resources for the single-file GMM launcher.
+// PAYLOAD is the whole packaged program (real GMM.exe + every DLL it needs),
+// produced by release.bat before this target is (re)built -- see
+// CMakeLists.txt's "launcher target" section.
+101 ICON "../resources/app.ico"
+PAYLOAD RCDATA "payload.zip"

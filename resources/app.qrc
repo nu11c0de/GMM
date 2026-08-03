@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/">
+    <file>app.ico</file>
+    <file>samp.jpg</file>
+    <file>sanny4.png</file>
+  </qresource>
+</RCC>

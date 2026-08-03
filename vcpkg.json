@@ -1,0 +1,19 @@
+{
+  "name": "gtamm",
+  "version": "0.1.0",
+  "description": "GTA San Andreas mod manager (standalone)",
+  "license": "MIT",
+  "dependencies": [
+    "nlohmann-json",
+    "catch2",
+    {
+      "name": "libarchive",
+      "features": [
+        "bzip2",
+        "lzma",
+        "zstd"
+      ]
+    }
+  ],
+  "builtin-baseline": "a0400024711b283056538ac19ced80b91a83c24c"
+}

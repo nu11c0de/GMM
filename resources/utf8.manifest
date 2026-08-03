@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+  <!--
+    Makes GetACP(), the process's "ANSI" code page, report UTF-8 (Windows 10
+    1903+; ignored, harmless, on older Windows). Without this, any narrow
+    std::string to std::filesystem::path conversion (path::string(),
+    path::generic_string(), the fs::path(std::string) constructor; all used
+    throughout this codebase, which otherwise assumes std::string is UTF-8)
+    goes through the legacy system ANSI code page instead. On a machine whose
+    code page cannot represent some Unicode filename found in a modder's
+    archive (e.g. a Vietnamese/Chinese name, or Latin letters with accents
+    outside Windows-1251 on a Russian system), std::filesystem throws
+    "No mapping for the Unicode character exists in the target multi-byte
+    code page", exactly the crash seen importing a build with such a file.
+    With this manifest, GetACP() equals CP_UTF8, so the conversion always
+    succeeds and actually produces UTF-8 (matching what the JSON/GUI layers
+    already assume), instead of silently mojibaking on a lucky day.
+  -->
+  <asmv3:application xmlns:asmv3="urn:schemas-microsoft-com:asm.v3">
+    <asmv3:windowsSettings xmlns="http://schemas.microsoft.com/SMI/2019/WindowsSettings">
+      <activeCodePage>UTF-8</activeCodePage>
+    </asmv3:windowsSettings>
+  </asmv3:application>
+</assembly>
